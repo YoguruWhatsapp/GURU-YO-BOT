@@ -53,7 +53,23 @@ const listMessage = {
       }
       chat.welcome = isEnable
       break
-      
+     case 'jarvis':
+     case 'autotalk':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+           throw false
+          }}
+      chat.jarvis = isEnable
+     break
+	case 'pmblocker':
+isAll = true
+if (!isROwner) {
+global.dfail('rowner', m, conn)
+throw false
+}
+bot.pmblocker = isEnable
+break	   
       case 'detect':
       case 'detector':
         if (!m.isGroup) {
@@ -199,6 +215,7 @@ const listMessage = {
 ▢ autosticker
 ▢ detect
 ▢ antidelete
+▢ jarvis
 └───────────── 
 ┌─⊷ *USERS*
 ▢ autolevelup
@@ -232,6 +249,6 @@ m.reply(`
 }
 handler.help = ['en', 'dis'].map(v => v + 'able <option>')
 handler.tags = ['nable']
-handler.command = /^((en|dis)able|(tru|fals)e|(turn)?o(n|ff)|[01])$/i
+handler.command = /^((en|dis)able|(turn)?o(n|ff)|[01])$/i
 
 export default handler
